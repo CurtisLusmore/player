@@ -1,0 +1,15 @@
+<html>
+<head>
+<body>
+    <video id="video" controls>
+    </video>
+    <script>
+        const params = new URLSearchParams(document.location.search);
+        const video = document.getElementById('video');
+        const source = document.createElement('source');
+        source.src = params.get('src');
+        source.type = 'video/mp4';
+        video.appendChild(source);
+    </script>
+</body>
+</html>
