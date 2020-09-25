@@ -1,14 +1,34 @@
 <html>
 <head>
+    <title>Player</title>
+    <style>
+        body { margin: 0; }
+        #video {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+        }
+    </style>
+</head>
 <body>
     <video id="video" controls>
     </video>
     <script>
         const params = new URLSearchParams(document.location.search);
+
         const video = document.getElementById('video');
+
+        const src = params.get('src');
+        const parts = src.split('/');
+        const filename = parts[parts.length - 1];
+        const name = filename.split('.')[0];
+
+        document.title = `Player | ${name}`;
+
         const source = document.createElement('source');
-        source.src = params.get('src');
+        source.src = src;
         source.type = 'video/mp4';
+
         video.appendChild(source);
     </script>
 </body>
